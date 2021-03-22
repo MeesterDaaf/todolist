@@ -27,12 +27,24 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        Todo::create([
-            'title' => $request->get('title'),
-            'content' => $request->get('content')
+        $request->validate([
+            'title'   => 'required',
+            'content' => 'required',
         ]);
 
-        return redirect()->route('home');
+
+        if ($request->parent == 0) {
+            $request->parent = NULL;
+        }
+
+        Todo::create(
+            [
+                'title'   => $request->title,
+                'content' => $request->content,
+                'parent'  => $request->parent,
+            ]
+
+        );
     }
 
 
