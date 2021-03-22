@@ -25,6 +25,7 @@ class TodoFactory extends Factory
             'title' => $this->faker->words(3, true),
             'content' => $this->faker->paragraph(2),
             'done' => $this->faker->boolean(25),
+            'parent' => NULL
         ];
     }
 }
