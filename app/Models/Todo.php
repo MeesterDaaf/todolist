@@ -21,4 +21,10 @@ class Todo extends Model
     {
         return $this->hasOne('App\Models\Todo', 'id', 'parent');
     }
+
+    //check if a child todo item is set to zero
+    public function scopeIsNotDone($query, $parent)
+    {
+        return $query->where('done', 0)->where('parent', $parent);
+    }
 }
