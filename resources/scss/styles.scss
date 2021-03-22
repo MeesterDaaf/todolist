@@ -8,7 +8,7 @@ $color-black: #000000;
 $color-gray: #E0E0E0;
 $box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.2);
 
-input, textarea {
+input, textarea,select {
     border-radius: .25rem;
     border: 1px solid $color-gray;
 }
@@ -18,7 +18,7 @@ input:focus, textarea:focus {
     box-shadow: 0 0 0 4px rgba($color-secondary, .33);
 }
 
-input[type="text"], textarea {
+input[type="text"], textarea, select {
     padding: .5rem;
 }
 
@@ -104,7 +104,7 @@ header {
         resize: vertical;
     }
 
-    input, textarea {
+    input, textarea, select {
         box-sizing: border-box;
         display: block;
         width: 100%;

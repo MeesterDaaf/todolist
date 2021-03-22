@@ -349,7 +349,7 @@ template {
 }
 
 @charset "UTF-8";
-input, textarea {
+input, textarea, select {
   border-radius: 0.25rem;
   border: 1px solid #E0E0E0;
 }
@@ -359,7 +359,7 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 4px rgba(0, 60, 251, 0.33);
 }
 
-input[type=text], textarea {
+input[type=text], textarea, select {
   padding: 0.5rem;
 }
 
@@ -436,7 +436,7 @@ header {
 .create-todo__input-group textarea {
   resize: vertical;
 }
-.create-todo__input-group input, .create-todo__input-group textarea {
+.create-todo__input-group input, .create-todo__input-group textarea, .create-todo__input-group select {
   box-sizing: border-box;
   display: block;
   width: 100%;
