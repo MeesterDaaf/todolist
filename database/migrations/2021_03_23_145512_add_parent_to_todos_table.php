@@ -14,7 +14,7 @@ class AddParentToTodosTable extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->unsignedBigInteger('parent')->nullable();
+            $table->unsignedBigInteger('parent')->after('content')->nullable();
             $table->foreign('parent')->references('id')->on('todos');
         });
     }
