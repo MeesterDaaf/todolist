@@ -18,10 +18,7 @@ class CreateTodosTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->boolean('done')->default(false);
-            $table->unsignedBigInteger('parent')->nullable();
             $table->timestamps();
-
-            $table->foreign('parent')->references('id')->on('todos');
         });
     }
 
