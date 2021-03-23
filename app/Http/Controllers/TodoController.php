@@ -46,7 +46,7 @@ class TodoController extends Controller
 
         );
 
-        
+        return redirect()->route('home');
     }
 
 
