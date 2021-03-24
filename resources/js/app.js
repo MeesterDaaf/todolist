@@ -15,17 +15,15 @@ document.addEventListener('change', (e) => {
         }).then(function (response) {
             
             //there is a response.. now what shall we do with it....
-            console.log(response);
-            // if(e.target.checked){
-            //     let children =e.target.parentNode.parentNode.children;
-            //     let child = children[1].querySelector('.joke');
+            if(e.target.checked && response.data.setup != undefined){
+                let child = document.querySelector('.joke');
                 
-            //     let setup = response.data.setup;
-            //     let punch  = response.data.punchline;
+                let setup = response.data.setup;
+                let punch  = response.data.punchline;
 
-            //     child.innerHTML = setup;
-            //     child.append(punch);
-            // }
+                child.innerHTML = setup;
+                child.append(punch);
+            }
             
           
           });

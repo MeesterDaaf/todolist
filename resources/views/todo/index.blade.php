@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container">
+        <p class="joke"></p>    
         <ul class="todo-list">
             @foreach($todos as $todo)
                 <li class="todo-item">
@@ -15,7 +16,7 @@
                     <div class="todo-item__content">
                         <h3>{{ ucfirst($todo->title) }}</h3>
                         <p>{{ $todo->content }}</p>
-                        <p class="joke"></p>                    
+                                        
                     </div>
                         <div class="todo__children">
                         @isset($todo->children)
