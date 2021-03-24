@@ -49,8 +49,6 @@ class TodoController extends Controller
         return redirect()->route('home');
     }
 
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -62,7 +60,8 @@ class TodoController extends Controller
     {
         $result = $todo->update(['done' => ($request->get('done') === 'on')]);
 
-        //check if todo has parent
+        $json = null;
+        //check if todo has parent if not, it is a parent
         if ($todo->parent != null) {
 
             //filter through the children and check done status, count the amount found
@@ -71,12 +70,18 @@ class TodoController extends Controller
             })->count();
 
             if ($amountNotDone == 0) { //if all the children are set on done...set parent on done
-                $todo->parent()->first()->update([
+                $result =  $todo->parent()->first()->update([
                     'done'  => 1
                 ]);
+
+                //parent is done.. you get the joke
+                $json = $todo->getTheJoke();
             }
+        } else {
+            //only parent is set to done. So jokes on you
+            $json = $todo->getTheJoke();
         }
 
-        return response($result, $result ? 200 : 500);
+        return response($json, $result ? 200 : 500);
     }
 }

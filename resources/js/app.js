@@ -12,5 +12,9 @@ document.addEventListener('change', (e) => {
         .catch(err => {
             console.error(err)
             e.target.checked = !e.target.checked
-        })
+        }).then(function (response) {
+            console.log(response);
+            
+          
+          });
 })

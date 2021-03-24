@@ -3,8 +3,6 @@
 @extends('layout.app')
 
 @section('content')
-
-
     <div class="container">
         <ul class="todo-list">
             @foreach($todos as $todo)
@@ -13,14 +11,13 @@
                         @method('PUT')
                         @csrf
                         <input type="checkbox" name="done" {{ $todo->done ? 'checked' : null }}>
-                        <button type="submit" name="">send</button>
                     </form>
                     <div class="todo-item__content">
                         <h3>{{ ucfirst($todo->title) }}</h3>
                         <p>{{ $todo->content }}</p>
-                        
+                        <p class="joke"></p>                    
                     </div>
-                    <div class="todo__children">
+                        <div class="todo__children">
                         @isset($todo->children)
                             <ul class="todo-list__children">
                                 @forelse ($todo->children as $item)
@@ -33,12 +30,11 @@
                                                 @method('PUT')
                                                 @csrf
                                                 <input type="checkbox" name="done" {{ $item->done ? 'checked' : null }}>
-                                                <button type="submit" name="">send</button>
                                             </form>
                                         </div>
                                     </li>
                                 @empty
-                                    <p>No todo items</p>
+                                    &nbsp;
                             @endforelse
                             </ul>
                         @endisset

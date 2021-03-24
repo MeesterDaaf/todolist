@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Ixudra\Curl\Facades\Curl;
+
 class Todo extends Model
 {
     use HasFactory;
@@ -22,5 +24,8 @@ class Todo extends Model
         return $this->hasOne('App\Models\Todo', 'id', 'parent');
     }
 
-    
+    public function getTheJoke()
+    {
+        return Curl::to('https://official-joke-api.appspot.com/random_joke')->get();
+    }
 }
