@@ -63,14 +63,14 @@ class TodoController extends Controller
         $json = null;
         //check if todo has parent if not, it is a parent
         if ($todo->parent != null) {
-
+            $parent = $todo->parent()->with('children')->first();
             //filter through the children and check done status, count the amount found
-            $amountNotDone = $todo->parent()->first()->children->filter(function ($value) {
+            $amountNotDone = $parent->children->filter(function ($value) {
                 return $value['done'] == 0;
             })->count();
 
             if ($amountNotDone == 0) { //if all the children are set on done...set parent on done
-                $result =  $todo->parent()->first()->update([
+                $result =  $parent->update([
                     'done'  => 1
                 ]);
 
