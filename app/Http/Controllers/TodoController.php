@@ -15,7 +15,7 @@ class TodoController extends Controller
     public function index()
     {
         return view('todo.index', [
-            'todos' => Todo::where('parent', NULL)->get() //get only parent todo's
+            'todos' => Todo::whereNull('parent')->with('children')->get() //get only parent todo's
         ]);
     }
 
